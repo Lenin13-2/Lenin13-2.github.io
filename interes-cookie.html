@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<!--
+ // WEBSITE: https://themefisher.com
+ // TWITTER: https://twitter.com/themefisher
+ // FACEBOOK: https://www.facebook.com/themefisher
+ // GITHUB: https://github.com/themefisher/
+-->
+
+<html lang="en-us">
+
+<head>
+	<meta charset="utf-8">
+	<title>Wallet - Payday Loan Service Template</title>
+  <script>
+    function crearCookie(nombre, valor, dias) {
+      let date = new Date();
+      date.setTime(date.getTime() + (dias*24*60*60*1000));
+      document.cookie = nombre + "=" + valor + "; expires=" + date.toGMTString();
+    }
+    function validarCookie(nombre) {
+      const valor = `; ${document.cookie}`;
+      const parts = valor.split(`; ${nombre}=`);
+      if (parts.length === 2) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    function verificarCookie() {
+      let cookie_valida = validarCookie('interes-js');
+      if (cookie_valida != false) {
+        //landing ya fue visitada
+        window.location.href = "interes-v2.html"; //redirige a la version 2
+      } else {
+        //primera visita - crear cookie
+        crearCookie('interes-js', 1, 7);
+        window.location.href = "interes.html"; //redirige a la version 1
+      }
+    }
+  </script>
+</head>
+<body onload="verificarCookie()">
+</body>
+</html>
